@@ -1,29 +1,21 @@
-import { useState } from 'react'
 import QuotesList from '@/components/containers/QuotesList'
 import { useQuotes } from '@/components/hooks/useQuotes'
-import { Button } from '@/components/ui/button'
 import { Separator } from "@/components/ui/separator"
-import QuoteForm from './components/containers/QuoteForm'
+import QuoteForm from '@/components/containers/QuoteForm'
 
 import './App.css'
+import Modal from './components/containers/Modal'
 
 export default function App(): JSX.Element {
 
   const {quotes} = useQuotes()
-  const [showQuoteForm,setShowQuoteForm] = useState(false)
 
   return (
     <main className='container'>
-      {
-        showQuoteForm && 
-        <div className="flex justify-center">
-            <QuoteForm/>
-        </div>
-      }      
-      <div className='flex justify-between items-center h-28'>
+      <section className='flex justify-between items-center h-28'>
         <h1 className='font-bold text-lg sm:text-2xl px-4 py-2'>Famous Quotes</h1>
-        <Button onClick={()=>setShowQuoteForm(true)}>Add Quote</Button>
-      </div>
+        <Modal><QuoteForm/></Modal>
+      </section>
       <Separator className='max-w-[1400px] mx-auto'/>
       <section className='mt-8'>
         <QuotesList quotes={quotes}/>

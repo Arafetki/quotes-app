@@ -27,7 +27,6 @@ export default function QuoteForm() {
             author: author,
             body: body,
         }
-        console.log(newQuote)
         const newQuotesList = [...quotes]
         newQuotesList.push(newQuote)
         setQuotes(newQuotesList)
@@ -35,22 +34,22 @@ export default function QuoteForm() {
 
     return (
 <Form {...form}>
-  <form onSubmit={form.handleSubmit(onSubmitHandler)} className="mt-8 space-y-8 bg-gray-900 p-6 rounded-lg shadow-lg">
+  <form onSubmit={form.handleSubmit(onSubmitHandler)} className="mt-8 space-y-8 p-6 rounded-lg shadow-lg">
     {/* Author Field */}
     <FormField
       control={form.control}
       name="author"
       render={({ field }) => (
         <FormItem>
-          <FormLabel className="text-blue-400">Author</FormLabel>
+          <FormLabel className="text-foreground font-bold">Author</FormLabel>
           <FormControl>
             <Input 
-              placeholder="Author Name" 
+              placeholder="Author's name" 
               {...field} 
-              className="bg-gray-800 text-white border border-gray-700 rounded focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50"
+              className="text-foreground border border-foreground focus:border-none rounded"
             />
           </FormControl>
-          <FormDescription className="text-gray-500">
+          <FormDescription className="text-foreground">
             Enter author's name.
           </FormDescription>
           <FormMessage className="text-red-500"/>
@@ -64,15 +63,15 @@ export default function QuoteForm() {
       name="body"
       render={({ field }) => (
         <FormItem>
-          <FormLabel className="text-blue-400">Quote</FormLabel>
+          <FormLabel className="text-foreground font-bold">Quote</FormLabel>
           <FormControl>
             <Textarea 
-              placeholder="Enter the quote here" 
+              placeholder="Quote" 
               {...field} 
-              className="bg-gray-800 text-white border border-gray-700 rounded focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50"
+              className="text-foreground border border-foreground focus:border-none rounded"
             />
           </FormControl>
-          <FormDescription className="text-gray-500">
+          <FormDescription className="text-foreground">
             Enter the quote.
           </FormDescription>
           <FormMessage className="text-red-500"/>
@@ -83,7 +82,7 @@ export default function QuoteForm() {
     {/* Submit Button */}
     <Button 
       type="submit" 
-      className="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg transition-colors duration-300"
+      className="w-full bg-foreground hover:bg-foreground/80 text-background font-bold py-2 px-4 rounded-lg transition-colors duration-300"
     >
       Submit
     </Button>
